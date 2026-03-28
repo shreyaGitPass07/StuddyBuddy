@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Log In — Study Buddy</title>
+  <link rel="stylesheet" href="styles/auth.css" />
+</head>
+<body>
+
+  <!-- Left Panel -->
+  <div class="auth-left">
+    <div class="mesh-blob blob1"></div>
+    <div class="mesh-blob blob2"></div>
+    <div class="mesh-blob blob3"></div>
+
+    <a href="index.html" class="brand">
+      <span class="logo-icon">📚</span>
+      Study Buddy
+    </a>
+
+    <div class="left-content">
+      <h2>Welcome back.<br><span class="grad-text">Keep the streak going.</span></h2>
+      <p>Your tasks, notes, and progress are right where you left them. Log in and pick up where you stopped.</p>
+
+      <div class="stats-mini">
+        <div class="stat-mini-item">
+          <span class="stat-mini-num">87%</span>
+          <span class="stat-mini-label">feel more organised</span>
+        </div>
+        <div class="stat-mini-item">
+          <span class="stat-mini-num">12k+</span>
+          <span class="stat-mini-label">students on waitlist</span>
+        </div>
+        <div class="stat-mini-item">
+          <span class="stat-mini-num">100%</span>
+          <span class="stat-mini-label">free core features</span>
+        </div>
+      </div>
+
+      <div class="testimonial">
+        <div class="testimonial-avatar">PS</div>
+        <div>
+          <p class="testimonial-text">"I used to forget deadlines all the time. Now I check Study Buddy every morning like it's a habit."</p>
+          <p class="testimonial-name">Priya S. — 3rd Year, MBA</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right Panel -->
+  <div class="auth-right">
+    <div class="auth-card">
+
+      <div class="auth-header">
+        <h1>Welcome back 👋</h1>
+        <p>Log in to continue your study session.</p>
+      </div>
+
+      <form class="auth-form" id="loginForm" novalidate>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <div class="input-wrap">
+            <span class="input-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M1 5l7 5 7-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </span>
+            <input type="email" id="email" name="email" placeholder="you@college.edu" autocomplete="email" />
+          </div>
+          <span class="field-error" id="emailError"></span>
+        </div>
+
+        <div class="form-group">
+          <div class="label-row">
+            <label for="password">Password</label>
+            <a href="#" class="forgot-link">Forgot password?</a>
+          </div>
+          <div class="input-wrap">
+            <span class="input-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="3" y="7" width="10" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M5 7V5a3 3 0 016 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </span>
+            <input type="password" id="password" name="password" placeholder="Enter your password" autocomplete="current-password" />
+            <button type="button" class="toggle-pw" id="togglePw" aria-label="Show password">
+              <svg id="eyeIcon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1 8s2.5-5 7-5 7 5 7 5-2.5 5-7 5-7-5-7-5z" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="8" r="2" stroke="currentColor" stroke-width="1.5"/></svg>
+            </button>
+          </div>
+          <span class="field-error" id="passwordError"></span>
+        </div>
+
+        <button type="submit" class="btn-submit" id="submitBtn">
+          <span id="btnText">Log In</span>
+          <span id="btnSpinner" class="spinner hidden"></span>
+        </button>
+
+      </form>
+
+      <p class="switch-link">Don't have an account? <a href="signup.html">Sign Up Free</a></p>
+
+    </div>
+  </div>
+
+  <script src="scripts/auth.js"></script>
+</body>
+</html>

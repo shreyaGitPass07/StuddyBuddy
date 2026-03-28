@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Study Buddy — Your Academic Sidekick</title>
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+<body>
+
+  <!-- ─── NAVBAR ─── -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">
+      <span class="logo-icon">📚</span>
+      Study Buddy
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="signin.html" class="btn-login">Log In</a></li>
+      <li><a href="signup.html" class="btn-signup">Sign Up Free</a></li>
+    </ul>
+  </nav>
+
+  <!-- ─── HERO ─── -->
+  <section class="hero">
+    <!-- Soft background blobs -->
+    <div class="mesh-blob blob1"></div>
+    <div class="mesh-blob blob2"></div>
+    <div class="mesh-blob blob3"></div>
+
+    <div class="hero-badge">🎓 Built for college students</div>
+
+    <h1>
+      Study smarter,<br>
+      <span class="grad-text">not harder</span><br>
+      <span class="grad-text2">— finally.</span>
+    </h1>
+
+    <p>
+      Study Buddy keeps your tasks, time, and goals in one clean place —
+      so you can focus on what actually matters: learning.
+    </p>
+
+    <div class="hero-cta">
+      <a href="signup.html" class="cta-primary">
+        Get Started Free
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a href="#features" class="cta-secondary">Explore features</a>
+    </div>
+
+    <!-- Floating feature pills -->
+    <div class="hero-floats">
+      <div class="float-pill">
+        <span class="pill-dot" style="background:#4F46E5;"></span>
+        Smart To-Do Lists
+      </div>
+      <div class="float-pill">
+        <span class="pill-dot" style="background:#06B6D4;"></span>
+        Pomodoro Timer
+      </div>
+      <div class="float-pill">
+        <span class="pill-dot" style="background:#EC4899;"></span>
+        Flashcards
+      </div>
+      <div class="float-pill">
+        <span class="pill-dot" style="background:#10B981;"></span>
+        Progress Tracking
+      </div>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-bar"></div>
+    </div>
+  </section>
+
+  <!-- ─── MARQUEE ─── -->
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <span class="marquee-item">Task Management</span>
+      <span class="marquee-item">Study Timer</span>
+      <span class="marquee-item">Progress Tracking</span>
+      <span class="marquee-item">Deadline Alerts</span>
+      <span class="marquee-item">Notes &amp; Flashcards</span>
+      <span class="marquee-item">Focus Mode</span>
+      <span class="marquee-item">Academic Planner</span>
+      <span class="marquee-item">Task Management</span>
+      <span class="marquee-item">Study Timer</span>
+      <span class="marquee-item">Progress Tracking</span>
+      <span class="marquee-item">Deadline Alerts</span>
+      <span class="marquee-item">Notes &amp; Flashcards</span>
+      <span class="marquee-item">Focus Mode</span>
+      <span class="marquee-item">Academic Planner</span>
+    </div>
+  </div>
+
+  <!-- ─── FEATURES ─── -->
+  <section class="features" id="features">
+    <div class="features-header">
+      <div>
+        <p class="section-label reveal">What we offer</p>
+        <h2 class="section-title reveal reveal-delay-1">Everything you need<br>to ace the semester</h2>
+      </div>
+      <p class="section-sub reveal reveal-delay-2">
+        Four powerful tools, one focused platform. No clutter, no fluff —
+        just the essentials for college success.
+      </p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card c1 reveal">
+        <span class="feature-num">01</span>
+        <div class="feature-icon">✅</div>
+        <h3 class="feature-title">Smart To-Do Manager</h3>
+        <p class="feature-desc">Organise assignments, projects, and personal goals with priority tags, due dates, and subject filters. Never miss a deadline again.</p>
+        <span class="feature-tag">Live Now</span>
+      </div>
+
+      <div class="feature-card c2 reveal reveal-delay-1">
+        <span class="feature-num">02</span>
+        <div class="feature-icon">⏱</div>
+        <h3 class="feature-title">Pomodoro Study Timer</h3>
+        <p class="feature-desc">Lock in with the proven Pomodoro technique. Custom work/break intervals built for deep focus sessions and marathon study nights.</p>
+        <span class="feature-tag">Coming Soon</span>
+      </div>
+
+      <div class="feature-card c3 reveal reveal-delay-2">
+        <span class="feature-num">03</span>
+        <div class="feature-icon">🗂</div>
+        <h3 class="feature-title">Notes &amp; Flashcards</h3>
+        <p class="feature-desc">Capture lecture notes, create quick-review flashcard decks, and organise everything by subject. Studying meets flow state.</p>
+        <span class="feature-tag">Coming Soon</span>
+      </div>
+
+      <div class="feature-card c4 reveal reveal-delay-3">
+        <span class="feature-num">04</span>
+        <div class="feature-icon">📈</div>
+        <h3 class="feature-title">Progress Dashboard</h3>
+        <p class="feature-desc">Visual weekly streaks, task completion rates, and subject breakdowns. Watch your productivity grow in real time.</p>
+        <span class="feature-tag">Coming Soon</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── STATS ─── -->
+  <div class="stats">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <div class="stat-num"><span id="s1">0</span>%</div>
+        <div class="stat-label">of students feel more organised</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-1">
+        <div class="stat-num"><span id="s2">0</span>x</div>
+        <div class="stat-label">faster task completion reported</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-2">
+        <div class="stat-num"><span id="s3">0</span>k</div>
+        <div class="stat-label">students already on waitlist</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-3">
+        <div class="stat-num"><span id="s4">0</span>%</div>
+        <div class="stat-label">free — forever for core features</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── BENEFITS ─── -->
+  <section class="benefits" id="benefits">
+    <div class="benefits-inner">
+
+      <!-- Left: Benefits list -->
+      <div>
+        <p class="section-label reveal">Why Study Buddy</p>
+        <h2 class="section-title reveal reveal-delay-1">Designed around<br>how you actually study</h2>
+
+        <div class="benefit-list">
+          <div class="benefit-item reveal reveal-delay-1">
+            <div class="bi-icon">🎯</div>
+            <div class="bi-text">
+              <h4>Stay on top of deadlines</h4>
+              <p>See every assignment, test, and project deadline in one place. Colour-coded priority so you always know what's urgent.</p>
+            </div>
+          </div>
+          <div class="benefit-item reveal reveal-delay-2">
+            <div class="bi-icon">⚡</div>
+            <div class="bi-text">
+              <h4>Eliminate decision fatigue</h4>
+              <p>Stop wasting brain energy deciding what to do next. Let Study Buddy surface the most important task automatically.</p>
+            </div>
+          </div>
+          <div class="benefit-item reveal reveal-delay-3">
+            <div class="bi-icon">🏆</div>
+            <div class="bi-text">
+              <h4>Build a consistent study habit</h4>
+              <p>Daily streaks and visual progress keep you accountable — without the stress. Small wins, every single day.</p>
+            </div>
+          </div>
+          <div class="benefit-item reveal reveal-delay-4">
+            <div class="bi-icon">🔒</div>
+            <div class="bi-text">
+              <h4>Always free for core features</h4>
+              <p>Everything you need to organise your academic life comes free. No paywalls, no tricks. Built for students, by students.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: App mockup -->
+      <div class="mockup-panel reveal reveal-delay-2">
+        <div class="mockup-topbar">
+          <div class="dots"><span></span><span></span><span></span></div>
+          <div class="mockup-title-bar">studybuddy.app — Today's Tasks</div>
+          <div style="width: 60px;"></div>
+        </div>
+
+        <div class="mockup-tasks">
+          <div class="task-row">
+            <div class="task-check done">✓</div>
+            <span class="task-text done-text">Read Chapter 4 — Economics</span>
+            <span class="task-due">Done</span>
+          </div>
+          <div class="task-row">
+            <div class="task-check done">✓</div>
+            <span class="task-text done-text">Submit Lab Report — Chemistry</span>
+            <span class="task-due">Done</span>
+          </div>
+          <div class="task-row">
+            <div class="task-check todo"></div>
+            <span class="task-text">Prepare presentation slides</span>
+            <span class="task-due urgent">Today</span>
+          </div>
+          <div class="task-row">
+            <div class="task-check todo"></div>
+            <span class="task-text">Practice problems — Math</span>
+            <span class="task-due">Tomorrow</span>
+          </div>
+          <div class="task-row">
+            <div class="task-check todo"></div>
+            <span class="task-text">Revise for mid-term exam</span>
+            <span class="task-due">In 3 days</span>
+          </div>
+        </div>
+
+        <div class="mockup-progress">
+          <div class="progress-header">
+            <span>Today's progress</span>
+            <strong>40% complete</strong>
+          </div>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar-fill" id="mockProgressBar"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── HOW IT WORKS ─── -->
+  <section class="how" id="how">
+    <div style="text-align: center; max-width: 560px; margin: 0 auto;">
+      <p class="section-label reveal" style="justify-content: center;">Simple as that</p>
+      <h2 class="section-title reveal reveal-delay-1">Up and running<br>in 3 steps</h2>
+    </div>
+
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <h3>Create your account</h3>
+        <p>Sign up for free in under 30 seconds. No credit card, no stress. Just your name and email to get started.</p>
+      </div>
+      <div class="step reveal reveal-delay-1">
+        <div class="step-num">02</div>
+        <h3>Add your tasks</h3>
+        <p>Drop in your assignments, exams, and goals. Set priorities and due dates to build your personal academic schedule.</p>
+      </div>
+      <div class="step reveal reveal-delay-2">
+        <div class="step-num">03</div>
+        <h3>Stay on track</h3>
+        <p>Check off tasks, track your streak, and watch your productivity grow one day at a time. That's it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FINAL CTA ─── -->
+  <section class="cta-section">
+    <div class="mesh-blob blob1"></div>
+    <div class="mesh-blob blob2"></div>
+
+    <div class="cta-box reveal">
+      <h2>Your best semester<br>starts <span class="grad-text">right now.</span></h2>
+      <p>Join thousands of students already getting organised with Study Buddy. It's free — what are you waiting for?</p>
+      <a href="signup.html" class="cta-primary" style="font-size: 1rem; padding: 1rem 2.6rem;">
+        Create Free Account
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer>
+    <a href="#" class="footer-logo">Study Buddy</a>
+    <ul class="footer-links">
+      <li><a href="#">Features</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Privacy</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <span class="footer-copy">© 2025 Study Buddy. All rights reserved.</span>
+  </footer>
+
+  <script src="scripts/main.js"></script>
+</body>
+</html>

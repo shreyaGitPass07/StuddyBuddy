@@ -210,7 +210,7 @@ if (isSignup) {
     
 
     
-    const API_BASE = "http://localhost:3000/api";
+    const API_BASE = "http://localhost:3000/api/auth";
     const response = await fetch(`${API_BASE}/register`,{
       method : "POST",
       headers : {
@@ -286,7 +286,7 @@ if (isLogin) {
     // Simulate API call
 
     
-    const API_BASE = "http://localhost:3000/api";
+    const API_BASE = "http://localhost:3000/api/auth";
 
     const response = await fetch(`${API_BASE}/login`, {
       method : "POST",
@@ -308,11 +308,14 @@ if (isLogin) {
       return;
     }
 
+    localStorage.setItem("token", data.token)
+    localStorage.setItem("student" , JSON.stringify(data.student))
+
     showToast('Logged in successfully! Welcome back 👋');
 
     // Redirect to your dashboard here
     setTimeout(() => {
       window.location.href = 'dashboard.html';
-    }, 2000);
+    }, 1500);
   });
 }

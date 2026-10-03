@@ -13,6 +13,12 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true
+  },
+  college: {
+    type : String
+  },
+  Year: {
+    type: String
   }
 }, { timestamps: true });
 

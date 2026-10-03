@@ -91,7 +91,8 @@ export const loginUser = async (req,res) => {
         res.json({
             success : true,
             message : "Login Successfull",
-            token
+            token,
+            student : student
         })
     } catch(e){
         res.status(500).json({
@@ -105,11 +106,18 @@ export const loginUser = async (req,res) => {
 
 export const getMe = async (req, res) =>{
     try{
-        const student = await Student.findById(req.userID).select("-password");
+        const student = await Student.findById(req.userId);
+
+        if (!student){
+          res.json({
+            success : false,
+            message : "User not found"
+          })
+        }
 
         res.json({
             success : true,
-            user
+            student
         })
     }catch(e) {
         res.status(500).json({
@@ -118,3 +126,71 @@ export const getMe = async (req, res) =>{
         })
     }
 }
+
+export const deleteUser = async (req, res) => {
+    try {
+      const { id } = req.params;
+  
+      const user = await Student.findByIdAndDelete(id);
+  
+      if (!user) {
+        return res.status(404).json({
+          success: false,
+          message: "User not found"
+        });
+      }
+  
+      res.status(200).json({
+        success: true,
+        message: "User deleted successfully"
+      });
+  
+    } catch (e) {
+      res.status(500).json({
+        success: false,
+        message: "Server Error"
+      });
+    }
+  };
+
+
+  export const updateUser = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const updates = req.body;
+  
+      // Optional: restrict fields you don't want to update
+      if (updates.password) {
+        return res.status(400).json({
+          success: false,
+          message: "Password update not allowed here"
+        });
+      }
+  
+      const user = await Student.findByIdAndUpdate(
+        id,
+        { $set: updates },   // 🔥 partial update
+        { new: true, runValidators: true }
+      );
+  
+      if (!user) {
+        return res.status(404).json({
+          success: false,
+          message: "User not found"
+        });
+      }
+  
+      res.status(200).json({
+        success: true,
+        message: "User updated successfully",
+        data: user
+      });
+  
+    } catch (e) {
+      res.status(500).json({
+        success: false,
+        message: e,
+        
+      });
+    }
+  };

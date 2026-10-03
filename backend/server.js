@@ -3,6 +3,8 @@ import dotenv from "dotenv";
 import cors from "cors";
 import { connectDB } from "./config/db.js";
 import router from "./routes/authRoutes.js";
+import assignmentRouter from "./routes/assignmentsRoutes.js";
+import AIrouter from "./routes/aiReply.js";
 
 dotenv.config();
 const app = express();
@@ -12,7 +14,10 @@ app.use(express.json())
 
 connectDB();
 
-app.use("/api", router)
+app.use("/api/assignments",assignmentRouter )
+app.use("/api/auth", router)
+app.use("/api", AIrouter)
+
 
 app.get("/", (req, res) => {
     res.status(200).send("endpoint working")

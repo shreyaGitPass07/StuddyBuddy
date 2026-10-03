@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard — Study Buddy</title>
+  <link rel="stylesheet" href="styles/layout.css" />
+  <link rel="stylesheet" href="styles/dashboard.css" />
+</head>
+<body>
+
+  <!-- Appbar -->
+  <div id="appbar-root"></div>
+
+  <!-- Sidebar -->
+  <div id="sidebar-root"></div>
+
+  <!-- Mobile overlay -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- Main page content -->
+  <div class="page-wrapper">
+    <main class="page-content">
+
+      <!-- Page header -->
+      <div class="dash-header">
+        <div>
+          <h1 class="dash-title">Dashboard</h1>
+          <p class="dash-sub dash">Good morning, Riya 👋 Here's your study overview for today.</p>
+        </div>
+        <div class="dash-date" id="dashDate"></div>
+      </div>
+
+      <!-- ── Summary Cards ── -->
+      <div class="cards-row">
+
+        <!-- Assignments Card -->
+        <div class="summary-card card-assignments">
+          <div class="card-top">
+            <div class="card-icon card-icon--indigo">
+              <svg width="20" height="20" viewBox="0 0 18 18" fill="none">
+                <path d="M13.5 2.25H15a1.5 1.5 0 011.5 1.5v12a1.5 1.5 0 01-1.5 1.5H3A1.5 1.5 0 011.5 15.75v-12a1.5 1.5 0 011.5-1.5h1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <rect x="5.25" y="1.5" width="7.5" height="3" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M5.25 9.75h7.5M5.25 12.75h4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="card-label">College Assignments</span>
+          </div>
+          <div class="card-stats">
+            <div class="stat-row">
+              <span class="stat-name">Total Assignments</span>
+              <span class="stat-val" id="aTotal">12</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-name">Completed</span>
+              <span class="stat-val stat-val--success" id="aCompleted">7</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-name">Pending</span>
+              <span class="stat-val stat-val--warn" id="aPending">5</span>
+            </div>
+          </div>
+          <div class="card-progress-wrap">
+            <div class="card-progress-bar">
+              <div class="card-progress-fill fill--indigo" id="aProgressFill" style="width:0%"></div>
+            </div>
+            <span class="card-progress-pct" id="aProgressPct">0%</span>
+          </div>
+        </div>
+
+        <!-- Personal Tasks Card -->
+        <div class="summary-card card-tasks">
+          <div class="card-top">
+            <div class="card-icon card-icon--violet">
+              <svg width="20" height="20" viewBox="0 0 18 18" fill="none">
+                <path d="M6.75 9l1.5 1.5 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <rect x="1.5" y="1.5" width="15" height="15" rx="2.5" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <span class="card-label">Personal Tasks</span>
+          </div>
+          <div class="card-stats">
+            <div class="stat-row">
+              <span class="stat-name">Total Tasks</span>
+              <span class="stat-val" id="tTotal">18</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-name">Completed</span>
+              <span class="stat-val stat-val--success" id="tCompleted">11</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-name">Pending</span>
+              <span class="stat-val stat-val--warn" id="tPending">7</span>
+            </div>
+          </div>
+          <div class="card-progress-wrap">
+            <div class="card-progress-bar">
+              <div class="card-progress-fill fill--violet" id="tProgressFill" style="width:0%"></div>
+            </div>
+            <span class="card-progress-pct" id="tProgressPct">0%</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ── Charts Row ── -->
+      <div class="charts-row">
+
+        <!-- Assignments Chart -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <div>
+              <h3 class="chart-title">Assignments Overview</h3>
+              <p class="chart-sub">Completed vs Pending</p>
+            </div>
+            <div class="chart-legend">
+              <span class="legend-dot" style="background:#4F46E5;"></span><span>Completed</span>
+              <span class="legend-dot" style="background:#C7D2FE;"></span><span>Pending</span>
+            </div>
+          </div>
+          <div class="chart-canvas-wrap">
+            <canvas id="assignmentsChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Tasks Chart -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <div>
+              <h3 class="chart-title">Personal Tasks Overview</h3>
+              <p class="chart-sub">Completed vs Pending</p>
+            </div>
+            <div class="chart-legend">
+              <span class="legend-dot" style="background:#7C3AED;"></span><span>Completed</span>
+              <span class="legend-dot" style="background:#DDD6FE;"></span><span>Pending</span>
+            </div>
+          </div>
+          <div class="chart-canvas-wrap">
+            <canvas id="tasksChart"></canvas>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Components -->
+  <script type="module" src="components/appbar.js"></script>
+  <script type = "module" src="components/sidebar.js"></script>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+
+  <!-- Dashboard logic -->
+  <script type="module" src="scripts/dashboard.js"></script>
+
+</body>
+</html>

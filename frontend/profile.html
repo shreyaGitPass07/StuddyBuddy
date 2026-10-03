@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profile — Study Buddy</title>
+  <link rel="stylesheet" href="styles/layout.css" />
+  <link rel="stylesheet" href="styles/profile.css" />
+</head>
+<body>
+
+  <!-- Appbar -->
+  <div id="appbar-root"></div>
+
+  <!-- Sidebar -->
+  <div id="sidebar-root"></div>
+
+  <!-- Mobile overlay -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- Main content -->
+  <div class="page-wrapper">
+    <main class="page-content">
+
+      <!-- Page Header -->
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">Profile</h1>
+          <p class="page-sub">Manage your personal information and account details.</p>
+        </div>
+      </div>
+
+      <!-- Profile Layout -->
+      <div class="profile-layout">
+
+        <!-- LEFT: Avatar card -->
+        <div class="profile-left">
+          <div class="avatar-card">
+            <div class="avatar-ring">
+              <div class="avatar-circle" id="avatarCircle">
+                <span id="avatarInitials">--</span>
+              </div>
+            </div>
+            <h2 class="avatar-name" id="displayName">Loading...</h2>
+            <p class="avatar-email" id="displayEmail">—</p>
+            <div class="avatar-tags">
+              <span class="avatar-tag" id="displayCollege">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                  <path d="M8 1L1 5l7 4 7-4-7-4zM1 11l7 4 7-4M1 8l7 4 7-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span id="collegeText">—</span>
+              </span>
+              <span class="avatar-tag" id="displayYear">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                  <rect x="1" y="2" width="14" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M5 1v2M11 1v2M1 6h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <span id="yearText">—</span>
+              </span>
+            </div>
+            <div class="avatar-joined" id="displayJoined">Member since —</div>
+          </div>
+
+          <!-- Quick stats -->
+          <div class="quick-stats">
+            <div class="qs-item">
+              <span class="qs-num" id="statAssignments">—</span>
+              <span class="qs-label">Assignments</span>
+            </div>
+            <div class="qs-divider"></div>
+            <div class="qs-item">
+              <span class="qs-num" id="statTasks">—</span>
+              <span class="qs-label">Tasks</span>
+            </div>
+            <div class="qs-divider"></div>
+            <div class="qs-item">
+              <span class="qs-num" id="statCompleted">—</span>
+              <span class="qs-label">Completed</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Info sections -->
+        <div class="profile-right">
+
+          <!-- Personal Info Card -->
+          <div class="info-card" id="viewCard">
+            <div class="info-card-header">
+              <div>
+                <h3 class="info-card-title">Personal Information</h3>
+                <p class="info-card-sub">Your account details stored with Study Buddy.</p>
+              </div>
+              <button class="btn-edit-profile" id="btnEdit">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                  <path d="M11.5 2.5l2 2-9 9H2.5v-2l9-9z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                </svg>
+                Edit Profile
+              </button>
+            </div>
+
+            <div class="info-grid">
+              <div class="info-field">
+                <span class="info-label">Full Name</span>
+                <span class="info-value" id="viewName">—</span>
+              </div>
+              <div class="info-field">
+                <span class="info-label">Email Address</span>
+                <span class="info-value" id="viewEmail">—</span>
+              </div>
+              <div class="info-field">
+                <span class="info-label">College / University</span>
+                <span class="info-value" id="viewCollege">—</span>
+              </div>
+              <div class="info-field">
+                <span class="info-label">Year of Study</span>
+                <span class="info-value" id="viewYear">—</span>
+              </div>
+              <div class="info-field">
+                <span class="info-label">Member Since</span>
+                <span class="info-value" id="viewJoined">—</span>
+              </div>
+              <div class="info-field">
+                <span class="info-label">Account Status</span>
+                <span class="info-value">
+                  <span class="status-badge">
+                    <span class="status-dot"></span> Active
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Edit Form Card (hidden by default) -->
+          <div class="info-card hidden" id="editCard">
+            <div class="info-card-header">
+              <div>
+                <h3 class="info-card-title">Edit Profile</h3>
+                <p class="info-card-sub">Update your information below.</p>
+              </div>
+            </div>
+
+            <form class="edit-form" id="editForm" novalidate>
+              <div class="eform-row">
+                <div class="eform-group">
+                  <label for="editName">Full Name <span class="req">*</span></label>
+                  <div class="einput-wrap">
+                    <svg class="einput-icon" width="15" height="15" viewBox="0 0 16 16" fill="none">
+                      <circle cx="8" cy="5" r="3" stroke="currentColor" stroke-width="1.4"/>
+                      <path d="M2 14c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                    </svg>
+                    <input type="text" id="editName" placeholder="Your full name" maxlength="80"/>
+                  </div>
+                  <span class="eform-error" id="errName"></span>
+                </div>
+
+                <div class="eform-group">
+                  <label for="editEmail">Email Address <span class="req">*</span></label>
+                  <div class="einput-wrap">
+                    <svg class="einput-icon" width="15" height="15" viewBox="0 0 16 16" fill="none">
+                      <rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.4"/>
+                      <path d="M1 5l7 5 7-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                    </svg>
+                    <input type="email" id="editEmail" placeholder="your@email.com"/>
+                  </div>
+                  <span class="eform-error" id="errEmail"></span>
+                </div>
+              </div>
+
+              <div class="eform-row">
+                <div class="eform-group">
+                  <label for="editCollege">College / University</label>
+                  <div class="einput-wrap">
+                    <svg class="einput-icon" width="15" height="15" viewBox="0 0 16 16" fill="none">
+                      <path d="M8 1L1 5l7 4 7-4-7-4zM1 11l7 4 7-4M1 8l7 4 7-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <input type="text" id="editCollege" placeholder="e.g. IIT Delhi" maxlength="120"/>
+                  </div>
+                </div>
+
+                <div class="eform-group">
+                  <label for="editYear">Year of Study</label>
+                  <div class="einput-wrap">
+                    <svg class="einput-icon" width="15" height="15" viewBox="0 0 16 16" fill="none">
+                      <rect x="1" y="2" width="14" height="13" rx="2" stroke="currentColor" stroke-width="1.4"/>
+                      <path d="M5 1v2M11 1v2M1 6h14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                    </svg>
+                    <select id="editYear">
+                      <option value="">Select year</option>
+                      <option value="1st Year">1st Year</option>
+                      <option value="2nd Year">2nd Year</option>
+                      <option value="3rd Year">3rd Year</option>
+                      <option value="4th Year">4th Year</option>
+                      <option value="5th Year">5th Year</option>
+                      <option value="Postgraduate">Postgraduate</option>
+                      <option value="PhD">PhD</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="eform-actions">
+                <button type="button" class="btn-discard" id="btnDiscard">Discard Changes</button>
+                <button type="submit" class="btn-save-profile" id="btnSave">
+                  <span id="saveLabel">Save Changes</span>
+                  <span class="btn-spinner hidden" id="saveSpinner"></span>
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Change Password Card -->
+          <div class="info-card" id="passwordCard">
+            <div class="info-card-header">
+              <div>
+                <h3 class="info-card-title">Change Password</h3>
+                <p class="info-card-sub">Keep your account secure with a strong password.</p>
+              </div>
+              <button class="btn-toggle-pw" id="btnTogglePw">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                  <rect x="3" y="7" width="10" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M5 7V5a3 3 0 016 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                Update Password
+              </button>
+            </div>
+
+            <form class="pw-form hidden" id="pwForm" novalidate>
+              <div class="eform-row">
+                <div class="eform-group">
+                  <label for="pwCurrent">Current Password <span class="req">*</span></label>
+                  <div class="einput-wrap">
+                    <svg class="einput-icon" width="15" height="15" viewBox="0 0 16 16" fill="none">
+                      <rect x="3" y="7" width="10" height="7" rx="1.5" stroke="currentColor" stroke-width="1.4"/>
+                      <path d="M5 7V5a3 3 0 016 0v2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                    </svg>
+                    <input type="password" id="pwCurrent" placeholder="Enter current password"/>
+                  </div>
+                  <span class="eform-error" id="errPwCurrent"></span>
+                </div>
+              </div>
+              <div class="eform-row">
+                <div class="eform-group">
+                  <label for="pwNew">New Password <span class="req">*</span></label>
+                  <div class="einput-wrap">
+                    <svg class="einput-icon" width="15" height="15" viewBox="0 0 16 16" fill="none">
+                      <rect x="3" y="7" width="10" height="7" rx="1.5" stroke="currentColor" stroke-width="1.4"/>
+                      <path d="M5 7V5a3 3 0 016 0v2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                    </svg>
+                    <input type="password" id="pwNew" placeholder="Min. 8 characters"/>
+                  </div>
+                  <span class="eform-error" id="errPwNew"></span>
+                </div>
+                <div class="eform-group">
+                  <label for="pwConfirm">Confirm New Password <span class="req">*</span></label>
+                  <div class="einput-wrap">
+                    <svg class="einput-icon" width="15" height="15" viewBox="0 0 16 16" fill="none">
+                      <rect x="3" y="7" width="10" height="7" rx="1.5" stroke="currentColor" stroke-width="1.4"/>
+                      <path d="M5 7V5a3 3 0 016 0v2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                    </svg>
+                    <input type="password" id="pwConfirm" placeholder="Re-enter new password"/>
+                  </div>
+                  <span class="eform-error" id="errPwConfirm"></span>
+                </div>
+              </div>
+              <div class="eform-actions">
+                <button type="button" class="btn-discard" id="btnCancelPw">Cancel</button>
+                <button type="submit" class="btn-save-profile">
+                  <span>Update Password</span>
+                  <span class="btn-spinner hidden" id="pwSpinner"></span>
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Danger Zone -->
+          <div class="danger-card">
+            <div class="danger-header">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M8 1l7 13H1L8 1z" stroke="#EF4444" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M8 6v4M8 11.5v.5" stroke="#EF4444" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <span>Danger Zone</span>
+            </div>
+            <div class="danger-body">
+              <div class="danger-item">
+                <div>
+                  <p class="danger-item-title">Log out of all devices</p>
+                  <p class="danger-item-desc">End all active sessions on every device.</p>
+                </div>
+                <button class="btn-danger-outline" id="btnLogoutAll">Log Out Everywhere</button>
+              </div>
+              <div class="danger-item">
+                <div>
+                  <p class="danger-item-title">Delete account</p>
+                  <p class="danger-item-desc">Permanently delete your account and all data. This cannot be undone.</p>
+                </div>
+                <button class="btn-danger-fill" id="btnDeleteAccount">Delete Account</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Components -->
+  <script type="module" src="components/appbar.js"></script>
+  <script type="module" src="components/sidebar.js"></script>
+  <!-- Profile logic -->
+  <script type="module" src="scripts/profile.js"></script>
+
+</body>
+</html>

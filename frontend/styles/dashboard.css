@@ -1,0 +1,253 @@
+/* ─────────────────────────────────────────
+   Study Buddy — dashboard/dashboard.css
+   ───────────────────────────────────────── */
+
+/* ─── Page Header ─── */
+.dash-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .dash-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    letter-spacing: -0.5px;
+    color: var(--text);
+    line-height: 1.1;
+  }
+  
+  .dash-sub {
+    font-size: 0.9rem;
+    color: var(--text-sec);
+    margin-top: 0.3rem;
+  }
+  
+  .dash-date {
+    background: var(--surface);
+    border: 1px solid var(--border-soft);
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-sec);
+    white-space: nowrap;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+  
+  /* ─── Cards Row ─── */
+  .cards-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* ─── Summary Card ─── */
+  .summary-card {
+    background: var(--surface);
+    border: 1.5px solid var(--border-soft);
+    border-radius: 20px;
+    padding: 1.6rem;
+    box-shadow: 0 2px 12px rgba(79,70,229,0.05);
+    transition: transform 0.25s, box-shadow 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .summary-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 20px 20px 0 0;
+  }
+  
+  .card-assignments::before { background: linear-gradient(90deg, #4F46E5, #818CF8); }
+  .card-tasks::before        { background: linear-gradient(90deg, #7C3AED, #A78BFA); }
+  
+  .summary-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(79,70,229,0.1);
+  }
+  
+  .card-top {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.4rem;
+  }
+  
+  .card-icon {
+    width: 42px; height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  
+  .card-icon--indigo { background: var(--indigo-light); color: var(--indigo); }
+  .card-icon--violet { background: #F5F3FF; color: var(--violet); }
+  
+  .card-label {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text);
+  }
+  
+  /* Stat rows inside card */
+  .card-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.55rem 0.8rem;
+    background: var(--bg);
+    border-radius: 10px;
+    border: 1px solid var(--border-soft);
+  }
+  
+  .stat-name {
+    font-size: 0.83rem;
+    color: var(--text-sec);
+  }
+  
+  .stat-val {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text);
+  }
+  
+  .stat-val--success { color: var(--emerald); }
+  .stat-val--warn    { color: var(--amber); }
+  
+  /* Progress bar inside card */
+  .card-progress-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .card-progress-bar {
+    flex: 1;
+    height: 7px;
+    background: var(--border-soft);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+  
+  .card-progress-fill {
+    height: 100%;
+    border-radius: 100px;
+    transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .fill--indigo { background: linear-gradient(90deg, #4F46E5, #818CF8); }
+  .fill--violet { background: linear-gradient(90deg, #7C3AED, #A78BFA); }
+  
+  .card-progress-pct {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    min-width: 36px;
+    text-align: right;
+  }
+  
+  /* ─── Charts Row ─── */
+  .charts-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+  
+  .chart-card {
+    background: var(--surface);
+    border: 1.5px solid var(--border-soft);
+    border-radius: 20px;
+    padding: 1.6rem;
+    box-shadow: 0 2px 12px rgba(79,70,229,0.05);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  
+  .chart-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(79,70,229,0.1);
+  }
+  
+  .chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.4rem;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  
+  .chart-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--text);
+  }
+  
+  .chart-sub {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+  
+  .chart-legend {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.75rem;
+    color: var(--text-sec);
+    flex-wrap: wrap;
+  }
+  
+  .legend-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  
+  .chart-canvas-wrap {
+    position: relative;
+    height: 220px;
+  }
+  
+  /* ─── Scroll reveal ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  
+  /* ─── Responsive ─── */
+  @media (max-width: 860px) {
+    .cards-row  { grid-template-columns: 1fr; }
+    .charts-row { grid-template-columns: 1fr; }
+  }
+  
+  @media (max-width: 480px) {
+    .dash-header { flex-direction: column; }
+    .chart-canvas-wrap { height: 180px; }
+    .card-label { font-size: 0.92rem; }
+  }

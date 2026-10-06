@@ -10,7 +10,7 @@
      DELETE /api/auth/:id          → delete account
    ───────────────────────────────────────── */
 
-   const AUTH_BASE = "http://localhost:3000/api/auth";
+   const AUTH_BASE = "https://studdybuddy-sghs.onrender.com/api/auth";
 
    /* ═══════════════════════════════════════
       FETCH STUDENT INFO FROM API
@@ -53,7 +53,7 @@
 
    async function fetchAssignmentStats(email) {
     try {
-      const res  = await fetch(`http://localhost:3000/api/assignments/stats/${email}`);
+      const res  = await fetch(`https://studdybuddy-sghs.onrender.com/api/assignments/stats/${email}`);
       const data = await res.json();
       if (!data.success) return;
   

@@ -2,7 +2,7 @@
    Study Buddy — dashboard/dashboard.js
    ───────────────────────────────────────── */
 
-   const API_BASE = "http://localhost:3000/api";
+   const API_BASE = "https://studdybuddy-sghs.onrender.com/api";
 
    // ─── Auth guard ───────────────────────────────────────────────
    // Call this first — if no token, redirect immediately

@@ -23,9 +23,9 @@
 /* ═══════════════════════════════════
    CONFIG
 ═══════════════════════════════════ */
-const API_BASE  = "http://localhost:3000/api/assignments";
-const AUTH_BASE = "http://localhost:3000/api/auth";
-const AI_BASE   = "http://localhost:3000/api/ai";
+const API_BASE  = "https://studdybuddy-sghs.onrender.com/api/assignments";
+const AUTH_BASE = "https://studdybuddy-sghs.onrender.com/api/auth";
+const AI_BASE   = "https://studdybuddy-sghs.onrender.com/api/ai";
 
 /* ═══════════════════════════════════
    STUDENT INFO

@@ -7,7 +7,7 @@
 
    import { getInitials } from "../utils/getInitials.js";
 
-   const AUTH_BASE = "http://localhost:3000/api/auth";
+   const AUTH_BASE = "https://studdybuddy-sghs.onrender.com/api/auth";
    
    /* ═══════════════════════════════════════
       FETCH STUDENT — shared so other modules

@@ -3,42 +3,11 @@
    Inject this on every authenticated page.
    Usage: <div id="sidebar-root"></div>
           <div id="sidebarOverlay" class="sidebar-overlay"></div>
-          <script src="components/sidebar.js"></script>
+          <script type="module" src="components/sidebar.js"></script>
    ───────────────────────────────────────── */
 
    import { getInitials } from "../utils/getInitials.js";
-
-   const AUTH_BASE = "https://studdybuddy-sghs.onrender.com/api/auth";
-   
-   /* ═══════════════════════════════════════
-      FETCH STUDENT
-   ═══════════════════════════════════════ */
-   async function fetchStudentInfo() {
-     const token = localStorage.getItem("token");
-   
-     if (!token) {
-       window.location.href = "signin.html";
-       return null;
-     }
-   
-     try {
-       const res  = await fetch(`${AUTH_BASE}/me`, {
-         headers: { Authorization: `Bearer ${token}` },
-       });
-       const data = await res.json();
-   
-       if (!data.success) {
-         localStorage.removeItem("token");
-         window.location.href = "signin.html";
-         return null;
-       }
-   
-       return data.student;
-     } catch {
-       window.location.href = "signin.html";
-       return null;
-     }
-   }
+   import { getCachedStudent, fetchFreshStudent } from "../utils/student.js";
    
    /* ═══════════════════════════════════════
       SVG ICONS
@@ -83,22 +52,20 @@
    ═══════════════════════════════════════ */
    function handleLogout() {
      localStorage.removeItem("token");
+     localStorage.removeItem("studentInfo"); // saved copy bhi hatao
      window.location.href = "signin.html";
    }
    
    /* ═══════════════════════════════════════
-      INIT
+      RENDER SIDEBAR
    ═══════════════════════════════════════ */
-   (async function () {
-     const studentInfo = await fetchStudentInfo();
-     if (!studentInfo) return; // already redirected
-   
+   function renderSidebar(studentInfo) {
      const currentPage = window.location.pathname.split("/").pop() || "dashboard.html";
      const initials    = studentInfo.name ? getInitials(studentInfo.name) : "U";
      const college     = studentInfo.college || "";
      const year        = studentInfo.Year    || "";
    
-     // Build subtitle line — e.g. "Delhi University · 2nd Year"
+     // Subtitle — e.g. "Delhi University · 2nd Year"
      const roleParts = [college, year].filter(Boolean);
      const roleText  = roleParts.length ? roleParts.join(" · ") : "Student";
    
@@ -145,19 +112,39 @@
      const root = document.getElementById("sidebar-root");
      if (root) root.innerHTML = html;
    
-     // Wire logout button
+     // Logout button dobara wire karo (kyunki HTML naya bana hai)
      document.getElementById("sidebarLogoutBtn")
        ?.addEventListener("click", handleLogout);
+   }
    
-     // Close sidebar when overlay is clicked
-     const overlay = document.getElementById("sidebarOverlay");
-     if (overlay) {
-       overlay.addEventListener("click", () => {
-         const sidebar    = document.getElementById("sidebar");
-         const hamburger  = document.getElementById("hamburgerBtn");
-         if (sidebar)   sidebar.classList.remove("open");
-         if (hamburger) hamburger.classList.remove("active");
-         overlay.classList.remove("show");
-       });
+   /* ═══════════════════════════════════════
+      OVERLAY CLICK — sirf ek baar wire hota hai
+   ═══════════════════════════════════════ */
+   const overlay = document.getElementById("sidebarOverlay");
+   if (overlay) {
+     overlay.addEventListener("click", () => {
+       const sidebar   = document.getElementById("sidebar");
+       const hamburger = document.getElementById("hamburgerBtn");
+       if (sidebar)   sidebar.classList.remove("open");
+       if (hamburger) hamburger.classList.remove("active");
+       overlay.classList.remove("show");
+     });
+   }
+   
+   /* ═══════════════════════════════════════
+      INIT
+   ═══════════════════════════════════════ */
+   
+   // 1) Turant: saved copy se sidebar dikha do (server ka wait nahi)
+   const cached = getCachedStudent();
+   if (cached) renderSidebar(cached);
+   
+   // 2) Peeche: server se confirm karo
+   fetchFreshStudent().then((fresh) => {
+     if (!fresh) return; // redirect ho chuka ya server slow hai
+   
+     // Pehli baar ya data badla ho tabhi dobara banao
+     if (!cached || JSON.stringify(cached) !== JSON.stringify(fresh)) {
+       renderSidebar(fresh);
      }
-   })();
+   });

@@ -368,7 +368,7 @@
    
      localStorage.removeItem("token");
      showToast("Logged out of all devices.");
-     setTimeout(() => { window.location.href = "login.html"; }, 1500);
+     setTimeout(() => { window.location.href = "signin.html"; }, 1500);
    });
    
    document.getElementById("btnDeleteAccount").addEventListener("click", async () => {
@@ -398,6 +398,7 @@
        }
    
        localStorage.clear();
+       localStorage.removeItem("studentInfo");
        showToast("Account deleted. Goodbye 👋");
        setTimeout(() => { window.location.href = "index.html"; }, 1800);
    

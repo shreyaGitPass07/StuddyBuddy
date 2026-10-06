@@ -2,55 +2,19 @@
    Study Buddy — components/appbar.js
    Inject this on every authenticated page.
    Usage: <div id="appbar-root"></div>
-          <script src="components/appbar.js"></script>
+          <script type="module" src="components/appbar.js"></script>
    ───────────────────────────────────────── */
 
    import { getInitials } from "../utils/getInitials.js";
-
-   const AUTH_BASE = "https://studdybuddy-sghs.onrender.com/api/auth";
+   import { getCachedStudent, fetchFreshStudent } from "../utils/student.js";
    
-   /* ═══════════════════════════════════════
-      FETCH STUDENT — shared so other modules
-      on the same page can import if needed
-   ═══════════════════════════════════════ */
    export let studentInfo = null;
    
-   async function fetchStudentInfo() {
-     const token = localStorage.getItem("token");
-   
-     if (!token) {
-       window.location.href = "login.html";
-       return null;
-     }
-   
-     try {
-       const res  = await fetch(`${AUTH_BASE}/me`, {
-         headers: { Authorization: `Bearer ${token}` },
-       });
-       const data = await res.json();
-   
-       if (!data.success) {
-         localStorage.removeItem("token");
-         window.location.href = "login.html";
-         return null;
-       }
-   
-       return data.student;
-     } catch {
-       // Network error — still redirect so page doesn't hang
-       window.location.href = "login.html";
-       return null;
-     }
-   }
-   
    /* ═══════════════════════════════════════
-      INIT
+      RENDER APPBAR
    ═══════════════════════════════════════ */
-   (async function () {
-     studentInfo = await fetchStudentInfo();
-     if (!studentInfo) return; // already redirected
-   
-     const initials = studentInfo.name ? getInitials(studentInfo.name) : "U";
+   function renderAppbar(student) {
+     const initials = student.name ? getInitials(student.name) : "U";
    
      const html = `
        <header class="appbar" id="appbar">
@@ -83,7 +47,7 @@
      const root = document.getElementById("appbar-root");
      if (root) root.innerHTML = html;
    
-     // Wire hamburger after HTML is injected
+     // Hamburger dobara wire karo (kyunki HTML naya bana hai)
      const hamburger = document.getElementById("hamburgerBtn");
      if (hamburger) {
        hamburger.addEventListener("click", () => {
@@ -94,4 +58,24 @@
          hamburger.classList.toggle("active");
        });
      }
-   })();
+   }
+   
+   /* ═══════════════════════════════════════
+      INIT
+   ═══════════════════════════════════════ */
+   
+   // 1) Turant: saved copy se appbar dikha do (server ka wait nahi)
+   const cached = getCachedStudent();
+   if (cached) {
+     studentInfo = cached;
+     renderAppbar(cached);
+   }
+   
+   // 2) Peeche: server se confirm karo
+   fetchFreshStudent().then((fresh) => {
+     if (!fresh) return; // redirect ho chuka ya server slow hai
+     studentInfo = fresh;
+   
+     // Pehli baar (cache nahi tha) ya naam badla ho tabhi dobara banao
+     if (!cached || cached.name !== fresh.name) renderAppbar(fresh);
+   });

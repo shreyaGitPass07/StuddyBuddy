@@ -210,7 +210,7 @@ if (isSignup) {
     
 
     
-    const API_BASE = "https://authenticationpractice.onrender.com/api/auth";
+    const API_BASE = "https://studdybuddy-sghs.onrender.com/api/auth";
     const response = await fetch(`${API_BASE}/register`,{
       method : "POST",
       headers : {
@@ -286,7 +286,7 @@ if (isLogin) {
     // Simulate API call
 
     
-    const API_BASE = "https://authenticationpractice.onrender.com/api/auth";
+    const API_BASE = "https://studdybuddy-sghs.onrender.com/api/auth";
 
     const response = await fetch(`${API_BASE}/login`, {
       method : "POST",

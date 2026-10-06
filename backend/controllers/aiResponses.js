@@ -18,7 +18,7 @@ export const AIreply = async (req, res) => {
 
     // 🔥 Use simplest working model
     const response = await ai.models.generateContent({
-      model: "gemini-3-flash-preview",
+      model: "gemini-3.6-flash",
       contents: question,
     });
 
